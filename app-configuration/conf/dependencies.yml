@@ -1,0 +1,4 @@
+self: play -> app-configuration 0.1
+
+require:
+    - play
