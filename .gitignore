@@ -3,9 +3,8 @@ lib/
 logs/
 tmp/
 test-result/
-
-app-configuration/samples-and-tests/demo/.classpath
-app-configuration/samples-and-tests/demo/.project
-app-configuration/samples-and-tests/demo/.settings/
-app-configuration/samples-and-tests/demo/eclipse/
+appconfiguration/samples-and-tests/demo/.classpath
+appconfiguration/samples-and-tests/demo/.project
+appconfiguration/samples-and-tests/demo/.settings/
+appconfiguration/samples-and-tests/demo/eclipse/
 

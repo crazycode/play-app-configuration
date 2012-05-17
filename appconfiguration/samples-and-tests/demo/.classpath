@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="views/**" kind="src" path="app"/>
-	<classpathentry kind="src" path="app-configuration-src"/>
+	<classpathentry kind="src" path="appconfig-src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="src" path="app-configuration"/>
+	<classpathentry kind="src" path="appconfiguration"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/usr/share/playframework-1.2.4/framework/play-1.2.4.jar" sourcepath="/usr/share/playframework-1.2.4/framework/src"/>
+	<classpathentry kind="lib" path="/home/tanglq/seewi/play-modules/play-app-configuration/appconfiguration/lib/play-app-configuration.jar"/>
 	<classpathentry kind="lib" path="/usr/share/playframework-1.2.4/framework/lib/bcprov-jdk15-1.45.jar"/>
 	<classpathentry kind="lib" path="/usr/share/playframework-1.2.4/framework/lib/commons-beanutils-1.8.3.jar"/>
 	<classpathentry kind="lib" path="/usr/share/playframework-1.2.4/framework/lib/commons-logging-1.1.1.jar"/>

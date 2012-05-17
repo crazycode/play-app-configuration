@@ -17,19 +17,19 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>app-configuration</name>
+			<name>appconfig-src</name>
 			<type>2</type>
-			<location>/home/tanglq/seewi/play-modules/play-app-configuration/app-configuration/app</location>
+			<location>/home/tanglq/seewi/play-modules/play-app-configuration/appconfiguration/src</location>
 		</link>
 		<link>
-			<name>app-configuration-src</name>
+			<name>appconfiguration</name>
 			<type>2</type>
-			<location>/home/tanglq/seewi/play-modules/play-app-configuration/app-configuration/src</location>
+			<location>/home/tanglq/seewi/play-modules/play-app-configuration/appconfiguration/app</location>
 		</link>
 		<link>
-			<name>conf/app-configuration</name>
+			<name>conf/appconfiguration</name>
 			<type>2</type>
-			<location>/home/tanglq/seewi/play-modules/play-app-configuration/app-configuration/conf</location>
+			<location>/home/tanglq/seewi/play-modules/play-app-configuration/appconfiguration/conf</location>
 		</link>
 	</linkedResources>
 </projectDescription>
