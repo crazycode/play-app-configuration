@@ -1,6 +1,5 @@
 package play.modules.appconfiguration.reconfig;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -17,7 +16,8 @@ public class KeyConfig {
      * 从keyConfig配置文件中读取必须要的key值
      * @param fileName
      */
-    public void read(String fileName) {
+    public static KeyConfig read(String fileName) {
+        KeyConfig keyConfig = new KeyConfig();
         VirtualFile appRoot = VirtualFile.open(Play.applicationPath);
         VirtualFile conf = appRoot.child("conf/" + fileName);
         
@@ -25,17 +25,18 @@ public class KeyConfig {
         try {
             propsFromFile = IO.readUtf8Properties(conf.inputstream());
         } catch (RuntimeException e) {
-            if (e.getCause() instanceof IOException) {
-                Logger.fatal("Cannot read "+fileName);
-            }
-            return;
+            Logger.error("Cannot read "+fileName, e);
+            return keyConfig;
         }
         for (Object oKey : propsFromFile.keySet()) {
             String key = oKey + "";
             String value = propsFromFile.getProperty(key);
-            if ("Required".equalsIgnoreCase(value)) {
-                requiredKeys.add(key);
+            if (value != null && ("Required".equalsIgnoreCase(value) || value.startsWith("R"))) {
+                keyConfig.requiredKeys.add(key);
+            } else {
+                Logger.warn("Can't process keyConfig " + key + ":" + value);
             }
         }
+        return keyConfig;
     }
 }
