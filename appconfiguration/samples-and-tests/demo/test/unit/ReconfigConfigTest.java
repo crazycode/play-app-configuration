@@ -18,7 +18,6 @@ public class ReconfigConfigTest extends UnitTest {
         assertEquals("ProjectValue", Play.configuration.getProperty("global.replace"));
     }
    
-
     @Ignore
     @Test(expected=Error.class)
     public void testReadBadConfigThenError() {

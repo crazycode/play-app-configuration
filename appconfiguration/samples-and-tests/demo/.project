@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>app-configuration-demo</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.playframework.playclipse.playNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>app-configuration</name>
+			<type>2</type>
+			<location>/home/tanglq/seewi/play-modules/play-app-configuration/app-configuration/app</location>
+		</link>
+		<link>
+			<name>app-configuration-src</name>
+			<type>2</type>
+			<location>/home/tanglq/seewi/play-modules/play-app-configuration/app-configuration/src</location>
+		</link>
+		<link>
+			<name>conf/app-configuration</name>
+			<type>2</type>
+			<location>/home/tanglq/seewi/play-modules/play-app-configuration/app-configuration/conf</location>
+		</link>
+	</linkedResources>
+</projectDescription>

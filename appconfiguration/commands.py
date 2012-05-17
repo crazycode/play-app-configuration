@@ -1,10 +1,10 @@
 # Here you can create play commands that are specific to the module, and extend existing commands
 
-MODULE = 'app-configuration'
+MODULE = 'appconfiguration'
 
 # Commands that are specific to your module
 
-COMMANDS = ['app-configuration:hello']
+COMMANDS = ['appconfiguration:hello']
 
 def execute(**kargs):
     command = kargs.get("command")
@@ -12,7 +12,7 @@ def execute(**kargs):
     args = kargs.get("args")
     env = kargs.get("env")
 
-    if command == "app-configuration:hello":
+    if command == "appconfiguration:hello":
         print "~ Hello"
 
 
