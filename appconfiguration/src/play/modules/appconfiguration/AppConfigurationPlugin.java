@@ -36,7 +36,7 @@ public class AppConfigurationPlugin extends PlayPlugin {
             Logger.info("It will NOT USE reconfig on development environment.");
             return;
         }
-        Logger.info("Use reconfig");
+        Logger.info("Use reconfig for app:" + Play.configuration.getProperty("application.name"));
         
         Map<String, String> reconfigMap = readReconfigMap();
         KeyConfig keyConfig = KeyConfig.read(KEY_CONFIG_FILE);

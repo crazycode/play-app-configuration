@@ -25,7 +25,7 @@ public class KeyConfig {
         try {
             propsFromFile = IO.readUtf8Properties(conf.inputstream());
         } catch (RuntimeException e) {
-            Logger.error("Cannot read "+fileName, e);
+            Logger.info("Cannot read "+fileName, e);
             return keyConfig;
         }
         for (Object oKey : propsFromFile.keySet()) {
@@ -34,7 +34,7 @@ public class KeyConfig {
             if (value != null && ("Required".equalsIgnoreCase(value) || value.startsWith("R"))) {
                 keyConfig.requiredKeys.add(key);
             } else {
-                Logger.warn("Can't process keyConfig " + key + ":" + value);
+                Logger.info("Can't process keyConfig " + key + ":" + value);
             }
         }
         return keyConfig;

@@ -21,7 +21,7 @@ public class RecofigReader {
             propsFromFile = IO.readUtf8Properties(conf.inputstream());
         } catch (RuntimeException e) {
             if (e.getCause() instanceof IOException) {
-                Logger.fatal("Cannot read "+filename);
+                Logger.info("Cannot read "+filename);
             }
             return null;
         }
