@@ -1,27 +1,28 @@
 package play.modules.appconfiguration.reconfig;
 
-import java.io.IOException;
-import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import play.Logger;
 import play.Play;
 import play.libs.IO;
 import play.utils.OrderSafeProperties;
 import play.vfs.VirtualFile;
 
+import java.io.IOException;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RecofigReader {
 
     public static Properties readOneConfigurationFile(VirtualFile reconfigRoot, String filename) {
-        
-        Properties propsFromFile=null;
-    
+
+        Properties propsFromFile = null;
+
         VirtualFile conf = reconfigRoot.child(filename);
         try {
             propsFromFile = IO.readUtf8Properties(conf.inputstream());
         } catch (RuntimeException e) {
             if (e.getCause() instanceof IOException) {
-                Logger.info("Cannot read "+filename);
+                Logger.info("Not found " + filename + ", Ignore it.");
             }
             return null;
         }
@@ -34,7 +35,7 @@ public class RecofigReader {
                 newConfiguration.put(key, propsFromFile.get(key).toString().trim());
             }
         }
-        
+
         propsFromFile = newConfiguration;
         // Resolve ${..}
         pattern = Pattern.compile("\\$\\{([^}]+)}");
@@ -64,8 +65,8 @@ public class RecofigReader {
             matcher.appendTail(newValue);
             propsFromFile.setProperty(key.toString(), newValue.toString());
         }
-        
-    
+
+
         return propsFromFile;
     }
 

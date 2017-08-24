@@ -1,4 +1,4 @@
-self: play -> appconfiguration 0.1
+self: play -> appconfiguration 1.0
 
 require:
     - play 1.2.4

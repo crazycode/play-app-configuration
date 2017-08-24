@@ -1,12 +1,13 @@
 package play.modules.appconfiguration.reconfig;
 
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
 import play.Logger;
 import play.Play;
 import play.libs.IO;
 import play.vfs.VirtualFile;
+
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
 
 public class KeyConfig {
     
@@ -25,7 +26,7 @@ public class KeyConfig {
         try {
             propsFromFile = IO.readUtf8Properties(conf.inputstream());
         } catch (RuntimeException e) {
-            Logger.info("Cannot read "+fileName, e);
+            Logger.info("Not Found conf/" + fileName + ", use empty KeyConfig.");
             return keyConfig;
         }
         for (Object oKey : propsFromFile.keySet()) {
