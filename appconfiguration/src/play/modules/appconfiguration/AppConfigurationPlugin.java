@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import play.Logger;
 import play.Play;
 import play.PlayPlugin;
+import play.modules.appconfiguration.reconfig.AppConfigurationAesEncryptHelper;
 import play.modules.appconfiguration.reconfig.KeyConfig;
 import play.modules.appconfiguration.reconfig.RecofigReader;
 import play.vfs.VirtualFile;
@@ -56,7 +57,23 @@ public class AppConfigurationPlugin extends PlayPlugin {
                 Logger.info("It will NOT Check key-define.conf on development environment.");
             }
             for (String key : reconfigMap.keySet()) {
-                Play.configuration.setProperty(key, reconfigMap.get(key));
+                String value = reconfigMap.get(key);
+                if (StringUtils.isNotBlank(value)) {
+                    if (value.startsWith(KeyConfig.AES_ENCRYPT_PREFIX)) {
+                        String encryptValue = value.substring(KeyConfig.AES_ENCRYPT_PREFIX.length());
+                        String decryptValue = AppConfigurationAesEncryptHelper.decryptFromBase64(encryptValue, KeyConfig.AES_ENCRYPT_KEY);
+                        if (key.contains("test")) {
+                            Logger.info("AppCOnfiguration Test Encrypt: key=" + key + ", encryptValue=" + encryptValue + ", decrypt:" + decryptValue);
+                        }
+                        if (StringUtils.isNotBlank(decryptValue)) {
+                            Play.configuration.setProperty(key, decryptValue);
+                        } else {
+                            Logger.info("AppCOnfiguration Decrypt Failed: key=" + key + ", encryptValue=" + encryptValue);
+                        }
+                    } else {
+                        Play.configuration.setProperty(key, value);
+                    }
+                }
             }
         } else {
             Logger.error("Does NOT found reconfig value!");
@@ -90,6 +107,13 @@ public class AppConfigurationPlugin extends PlayPlugin {
                 for (Object oKey : globalProps.keySet()) {
                     String key = oKey + "";
                     reconfigMap.put(key, globalProps.getProperty(key));
+                }
+            }
+            Properties frontProps = RecofigReader.readOneConfigurationFile(vfReconfigPath, "front.conf");
+            if (frontProps != null) {
+                for (Object oKey : frontProps.keySet()) {
+                    String key = oKey + "";
+                    reconfigMap.put(key, frontProps.getProperty(key));
                 }
             }
             Properties projectProps = RecofigReader.readOneConfigurationFile(vfReconfigPath, Play.configuration.getProperty("application.name") + ".conf");

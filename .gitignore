@@ -2,6 +2,7 @@ dist/
 lib/
 logs/
 tmp/
+.idea/
 test-result/
 .classpath
 .project

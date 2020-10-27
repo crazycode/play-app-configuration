@@ -10,7 +10,10 @@ import java.util.Properties;
 import java.util.Set;
 
 public class KeyConfig {
-    
+
+    public final static String AES_ENCRYPT_PREFIX = "AESENC:";
+    public final static String AES_ENCRYPT_KEY = "A31C272410964DF293952429C6CB3B28";
+
     public Set<String> requiredKeys = new HashSet<>();
 
     /**
